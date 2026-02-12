@@ -3,6 +3,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import KeyvRedis from '@keyv/redis';
 import { PrismaModule } from './modules/prisma/prisma.module';
 import { envConfig } from './config/envs';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { envConfig } from './config/envs';
       },
     }),
     PrismaModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],
