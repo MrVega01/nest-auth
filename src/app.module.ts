@@ -4,6 +4,9 @@ import KeyvRedis from '@keyv/redis';
 import { PrismaModule } from './modules/prisma/prisma.module';
 import { envConfig } from './config/envs';
 import { UsersModule } from './modules/users/users.module';
+import { BcryptModule } from './modules/bcrypt/bcrypt.module';
+import { SessionsModule } from './modules/sessions/sessions.module';
+import { TokensModule } from './modules/tokens/tokens.module';
 
 @Module({
   imports: [
@@ -18,6 +21,9 @@ import { UsersModule } from './modules/users/users.module';
     }),
     PrismaModule,
     UsersModule,
+    BcryptModule,
+    SessionsModule,
+    TokensModule,
   ],
   controllers: [],
   providers: [],
