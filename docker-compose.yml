@@ -1,8 +1,14 @@
 services:
-  auth-service:
-    build: .
+  auth-service-dev:
+    container_name: auth-service-dev
+    restart: unless-stopped
+    build:
+      context: .
+      target: dev
+      args:
+        PORT: ${PORT:-3000}
     ports:
-      - "3000:3000"
+      - "${PORT:-3000}:${PORT:-3000}"
     env_file:
       - .env
     environment:
@@ -11,6 +17,9 @@ services:
     command: sh -c "npx prisma generate && npm run start:dev"
     volumes: 
       - ./src:/usr/src/app/src
+    depends_on:
+      - auth-db
+      - auth-redis
   auth-db:
     container_name: auth-db
     image: postgres:16.2
