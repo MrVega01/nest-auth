@@ -9,6 +9,8 @@ const envVarsSchema = z.object({
     .transform((val) => val.split(',').map((origin) => origin.trim())),
   DATABASE_URL: z.string().min(1, 'DATABASE_URL is required'),
   REDIS_URL: z.string().min(1, 'REDIS_URL is required'),
+  RESEND_API_KEY: z.string().min(1, 'RESEND_API_KEY is required'),
+  RESEND_FROM_EMAIL: z.string().min(1, 'RESEND_FROM_EMAIL is required'),
 });
 
 const { error, data } = envVarsSchema.safeParse(process.env);
